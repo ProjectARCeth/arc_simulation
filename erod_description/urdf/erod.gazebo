@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<robot name="gazebo" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/erod</robotNamespace>
+    <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+  </plugin>
+</gazebo>
+
+  <gazebo reference="base_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="front_link">
+      <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="front_right_bar_link">
+      <material>Gazebo/Green</material>
+  </gazebo>
+
+  <gazebo reference="front_left_wheel_link">
+      <material>Gazebo/Black</material>
+      <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  <gazebo reference="front_right_wheel_link">
+      <material>Gazebo/Black</material>
+      <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  <gazebo reference="back_left_wheel_link">
+      <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="back_right_wheel_link">
+      <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="ground_truth" filename="libgazebo_ros_p3d.so">
+      <frameName>map</frameName>
+      <bodyName>perfect_state_link</bodyName>
+      <topicName>odom</topicName>
+      <updateRate>30.0</updateRate>
+    </plugin>
+  </gazebo>
+
+</robot>

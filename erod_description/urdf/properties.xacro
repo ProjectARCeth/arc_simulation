@@ -1,0 +1,35 @@
+<robot name="erod" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<!-- Constants -->
+	<xacro:property name="M_PI" value="3.1415926535897931" />
+	<xacro:property name="camera_link" value="0.05" />
+
+	<!-- Chasssis Properties -->
+	<xacro:property name="carLength" value="3.0" />
+	<xacro:property name="carWidth" value="0.8" />
+	<xacro:property name="carHeight" value="0.5" />
+	<xacro:property name="carMass" value="10" />
+	<xacro:property name="carIxx" value="800" />
+	<xacro:property name="carIyy" value="200" />
+	<xacro:property name="carIzz" value="200" />
+	<xacro:property name="groundClearance" value="0.15" />
+	<xacro:property name="hingeWidth" value="1.237" />			<!-- Distance between the rotational centres for the front wheel -->
+
+	<!-- Wheel Properties -->
+	<xacro:property name="wheelRadius" value="0.28" />
+	<xacro:property name="wheelWidth" value="0.195" />
+	<xacro:property name="wheelBase" value="2.3" />
+	<xacro:property name="trackWidth" value="1.6" />
+	<xacro:property name="wheelMass" value="0.01" />
+	<xacro:property name="max_steer" value="${0.3}" />
+
+
+	<!-- Dummy properties -->
+	<xacro:property name="dummyI" value="0.01" />
+	<xacro:property name="dummyM" value="0.01" />
+
+	<!-- Velodyne Laser -->
+	<xacro:property name="laserPosX" value="0.0" />		<!-- Values are relative to the base_link -->
+	<xacro:property name="laserPosZ" value="0.5" />
+
+
+</robot>

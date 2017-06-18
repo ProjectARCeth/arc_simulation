@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<robot name="erod" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<!-- Laser -->
+
+  <joint name="hokuyo_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="${laserPosX} 0 ${laserPosZ}" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="hokuyo_link"/>
+  </joint>
+
+  <link name="hokuyo_link">
+     <collision>
+       <origin xyz="0 0 0" rpy="0 0 0"/>
+       <geometry>
+     <box size="0.1 0.1 0.1"/>
+       </geometry>
+     </collision>
+
+     <visual>
+       <origin xyz="0 0 0" rpy="0 0 0"/>
+       <geometry>
+        <mesh filename="package://meshes/meshes/hokuyo.dae"/>
+       </geometry>
+     </visual>
+
+     <inertial>
+       <mass value="1e-5" />
+       <origin xyz="0 0 0" rpy="0 0 0"/>
+       <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+     </inertial>
+   </link>
+
+   <gazebo reference="hokuyo_link">
+   <sensor name="sensor_ray" type="ray">
+       <visualize>true</visualize>
+       <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
+       <ray>
+         <scan>
+           <horizontal>
+             <samples>500</samples>
+             <min_angle>0</min_angle>
+             <max_angle>6.24</max_angle>
+           </horizontal>
+           <vertical>
+             <samples>16</samples>
+             <min_angle>-0.2617993878</min_angle>
+             <max_angle>0.2617993878</max_angle>
+           </vertical>
+         </scan>
+         <range>
+           <min>0.05</min>
+           <max>50.0</max>
+         </range>
+       </ray>
+       <plugin name="plugin_1" filename="libgazebo_ros_block_laser.so">
+         <gaussianNoise>0.00</gaussianNoise>
+         <hokuyoMinIntensity>1</hokuyoMinIntensity>
+         <alwaysOn>true</alwaysOn>
+         <updateRate>5</updateRate>
+         <topicName>gazebo_vlp</topicName>
+         <frameName>base_link</frameName>
+       </plugin>
+     </sensor>
+</gazebo>
+
+
+
+
+</robot>

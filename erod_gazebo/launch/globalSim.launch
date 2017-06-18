@@ -1,0 +1,11 @@
+<launch>
+  <include file="$(find erod_gazebo)/launch/erod_world.launch" />
+  <node name="GZInterface" pkg="erod_control" type="eRodGZInterface_node" output="screen"/>
+  <!-- name is the name of the node and type is the name of the cpp_executable -->
+  <node name="regler_node" pkg="pure_pursuit_controller" type="regler_node" output="screen"/>
+  <node name="guard_node" pkg="guard" type="gridAnalyser"/>
+  <param name="use_gui" value="false"/>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"></node>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+</launch>
